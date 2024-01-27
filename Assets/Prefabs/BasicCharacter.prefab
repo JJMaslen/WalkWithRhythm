@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3798956246532664531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.49
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 735e0cda8baf2a14185c9ca13b724dc0, type: 2}
+    - target: {fileID: -4157524182732408741, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63d3e206b513904290c10398af3759d, type: 2}
+    - target: {fileID: 919132149155446097, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_Name
+      value: BasicCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333404860881803504, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63d3e206b513904290c10398af3759d, type: 2}
+    - target: {fileID: 8329799603232602711, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e63d3e206b513904290c10398af3759d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d85f6e393a6b9cf499d8e1001fc079de,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6666278360376824136}
+  m_SourcePrefab: {fileID: 100100000, guid: d85f6e393a6b9cf499d8e1001fc079de, type: 3}
+--- !u!1 &4069551220075368834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d85f6e393a6b9cf499d8e1001fc079de,
+    type: 3}
+  m_PrefabInstance: {fileID: 3798956246532664531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6666278360376824136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069551220075368834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bbd946a4caff1419e0d5ce83fb8925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 4069551220075368834}
