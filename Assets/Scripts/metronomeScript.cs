@@ -48,7 +48,6 @@ public class metronomeScript : MonoBehaviour
         int beat = (int)(bpmConvert(bpm) * 50);
 
         int count = timer % beat;
-        
 
         if (count >= beat - difficulty)
         {
@@ -57,6 +56,10 @@ public class metronomeScript : MonoBehaviour
                 OnBeat = true;
                 characterAnimate(true);
             }
+            OnBeat = true;
+        }
+        else if (count <= difficulty)
+        {
             OnBeat = true;
         }
         else
