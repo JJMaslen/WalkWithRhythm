@@ -6,7 +6,7 @@ using UnityEngine;
 public class metronomeScript : MonoBehaviour
 {
 
-    [SerializeField] int bpm = 60;
+    public int bpm = 60;
     [SerializeField] int timer = 0;
     [SerializeField] int difficulty = 0;
 
@@ -15,30 +15,46 @@ public class metronomeScript : MonoBehaviour
     [SerializeField] GameObject character = null;
     
 
-    public static bool OnBeat = false;
-    
-    double bpmConvert(double bpm)
+    public bool OnBeat = false;
+    bool doingAnimation = false;
+
+    public double bpmConvert(double bpm)
     {
         tbb = 60 / bpm;
         return tbb;
     }
 
-    void characterAnimate(bool on)
+    IEnumerator characterAnimate(float time, float duration)
     {
-        if (on) 
+        float lerp;
+        while (time < duration)
         {
-            character.transform.localScale = new Vector3(1, 0.6f, 1);
+            lerp = Mathf.Lerp(0.6f, 1, time/duration);
+            character.transform.localScale = new Vector3(character.transform.localScale.x, lerp, character.transform.localScale.z);
+            Debug.Log(lerp);
+            time += Time.deltaTime;
+            yield return null;
         }
-        else
-        {
-            character.transform.localScale = new Vector3(1, 1, 1);
-        }
+        doingAnimation = false;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private void Update()
+    {
+        if (OnBeat)
+        {
+            if (doingAnimation == false)
+            {
+                doingAnimation = true;
+                StartCoroutine(characterAnimate(0, (float)(bpmConvert(bpm)))); 
+            }
+        }
     }
 
     // Update is called once per frame
@@ -54,7 +70,6 @@ public class metronomeScript : MonoBehaviour
             if (OnBeat == false)
             {
                 OnBeat = true;
-                characterAnimate(true);
             }
             OnBeat = true;
         }
@@ -65,7 +80,7 @@ public class metronomeScript : MonoBehaviour
         else
         {
             OnBeat = false;
-            characterAnimate(false);
+            //characterAnimate(false);
         }
     }
 }

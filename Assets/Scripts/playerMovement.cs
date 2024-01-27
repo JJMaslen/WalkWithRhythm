@@ -10,6 +10,9 @@ public class playerMovement : MonoBehaviour
     [SerializeField] GameObject npcs = null;
 
     List<GameObject> npcsList = new List<GameObject>();
+    List<GameObject> collectedNPCList = new List<GameObject>();
+
+    public List<Vector3> previousPositons = new List<Vector3>();
 
     // Start is called before the first frame update
     void Start()
@@ -29,48 +32,38 @@ public class playerMovement : MonoBehaviour
             {
                 if (character.transform.position.z == npcsList[i].transform.position.z)
                 {
-                    Debug.Log("Collected");
+                    if (npcsList[i].GetComponent<NPCScript>().collected == false)
+                    {
+                        npcsList[i].GetComponent<NPCScript>().collected = true;
+                        npcsList[i].GetComponent<NPCScript>().positionInList = collectedNPCList.Count;
+                        collectedNPCList.Add(npcsList[i]);
+                    }
                 }
-                else
-                {
-                    Debug.Log("Not Collected");
-                }
-            }
-            else
-            {
-                Debug.Log("Not collected");
             }
         }
+    }
+
+    void addToPositionsList(Vector3 currentPostiton)
+    {
+        previousPositons.Insert(0,currentPostiton);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            character.transform.position += new Vector3(-4, 0, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            character.transform.position += new Vector3(0, 0, -4);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            character.transform.position += new Vector3(4, 0, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            character.transform.position += new Vector3(0, 0, 4);
-        }
-
-
         if (Input.anyKeyDown)
         {
             checkNPC();
-            if (metronomeScript.OnBeat)
+
+            for (int i = 0; i < npcsList.Count; i++)
+            {
+                if (npcsList[i].GetComponent<NPCScript>().collected)
+                {
+                    npcsList[i].GetComponent<NPCScript>().moveNPC();
+                }
+            }
+
+            if (character.GetComponent<metronomeScript>().OnBeat)
             {
                 //Debug.Log("hit!");
             }
@@ -78,6 +71,30 @@ public class playerMovement : MonoBehaviour
             {
                 //Debug.Log("Miss!");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            addToPositionsList(character.transform.position);
+            character.transform.position += new Vector3(-4, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            addToPositionsList(character.transform.position);
+            character.transform.position += new Vector3(0, 0, -4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            addToPositionsList(character.transform.position);
+            character.transform.position += new Vector3(4, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            addToPositionsList(character.transform.position);
+            character.transform.position += new Vector3(0, 0, 4);
         }
     }
 }
