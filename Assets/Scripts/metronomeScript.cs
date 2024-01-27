@@ -1,20 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class metronomeScript : MonoBehaviour
 {
 
-    public int bpm = 0;
-    float timer = 0;
+    [SerializeField] int bpm = 60;
+    [SerializeField] int timer = 0;
+    [SerializeField] int difficulty = 0;
 
-    float bpmConvert()
+    [SerializeField] double tbb;
+    
+    [SerializeField] GameObject character = null;
+    
+
+    public static bool OnBeat = false;
+    
+    double bpmConvert(double bpm)
     {
-        float number;
+        tbb = 60 / bpm;
+        return tbb;
+    }
 
-        number = 0;
-
-        return number;
+    void characterAnimate(bool on)
+    {
+        if (on) 
+        {
+            character.transform.localScale = new Vector3(1, 0.6f, 1);
+        }
+        else
+        {
+            character.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     // Start is called before the first frame update
@@ -27,10 +45,24 @@ public class metronomeScript : MonoBehaviour
     void FixedUpdate()
     {
         timer++;
+        int beat = (int)(bpmConvert(bpm) * 50);
 
-        if (timer % 50 == 0 )
+        int count = timer % beat;
+        
+
+        if (count >= beat - difficulty)
         {
-            Debug.Log(timer.ToString());
+            if (OnBeat == false)
+            {
+                OnBeat = true;
+                characterAnimate(true);
+            }
+            OnBeat = true;
+        }
+        else
+        {
+            OnBeat = false;
+            characterAnimate(false);
         }
     }
 }
