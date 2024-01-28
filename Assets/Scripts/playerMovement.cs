@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour
 
     [SerializeField] GameObject character = null;
     [SerializeField] GameObject npcs = null;
+    [SerializeField] Camera cam = null;
 
     List<GameObject> npcsList = new List<GameObject>();
     public List<GameObject> collectedNPCList = new List<GameObject>();
@@ -37,6 +38,31 @@ public class playerMovement : MonoBehaviour
                         npcsList[i].GetComponent<NPCScript>().collected = true;
                         npcsList[i].GetComponent<NPCScript>().positionInList = collectedNPCList.Count;
                         collectedNPCList.Add(npcsList[i]);
+
+                        if (npcsList[i].name == "Timpiani")
+                        {
+                            character.transform.Find("Timpiani").GetComponent<AudioSource>().volume = 1;
+                        }
+                        else if (npcsList[i].name == "Snare")
+                        {
+                            character.transform.Find("Snare").GetComponent<AudioSource>().volume = 1;
+                        }
+                        else if (npcsList[i].name == "Tuba")
+                        {
+                            character.transform.Find("Tuba").GetComponent<AudioSource>().volume = 1;
+                        }
+                        else if (npcsList[i].name == "Trombone")
+                        {
+                            character.transform.Find("Trombone").GetComponent<AudioSource>().volume = 1;
+                        }
+                        else if (npcsList[i].name == "Trumpet")
+                        {
+                            character.transform.Find("Trumpet").GetComponent<AudioSource>().volume = 1;
+                        }
+                        else if (npcsList[i].name == "Violin")
+                        {
+                            character.transform.Find("Violin").GetComponent<AudioSource>().volume = 1;
+                        }
                     }
                 }
             }
@@ -68,24 +94,28 @@ public class playerMovement : MonoBehaviour
         {
             addToPositionsList(character.transform.position);
             character.transform.position += new Vector3(-4, 0, 0);
+            cam.transform.position += new Vector3(-4, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
             addToPositionsList(character.transform.position);
             character.transform.position += new Vector3(0, 0, -4);
+            cam.transform.position += new Vector3(0, 0, -4);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             addToPositionsList(character.transform.position);
             character.transform.position += new Vector3(4, 0, 0);
+            cam.transform.position += new Vector3(4, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             addToPositionsList(character.transform.position);
             character.transform.position += new Vector3(0, 0, 4);
+            cam.transform.position += new Vector3(0, 0, 4);
         }
     }
 }
