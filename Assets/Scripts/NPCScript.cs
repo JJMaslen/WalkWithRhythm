@@ -22,11 +22,20 @@ public class NPCScript : MonoBehaviour
         {
             lerp = Mathf.Lerp(0.6f, 1, time / duration);
             npc.transform.localScale = new Vector3(npc.transform.localScale.x, lerp, npc.transform.localScale.z);
-            Debug.Log(lerp);
             time += Time.deltaTime;
             yield return null;
         }
         doingAnimation = false;
+    }
+
+    IEnumerator characterMove(float time, float duration)
+    {
+        float lerp;
+        while (time < duration)
+        {
+
+            yield return null;
+        }
     }
 
     // Start is called before the first frame update

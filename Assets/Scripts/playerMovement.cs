@@ -10,7 +10,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] GameObject npcs = null;
 
     List<GameObject> npcsList = new List<GameObject>();
-    List<GameObject> collectedNPCList = new List<GameObject>();
+    public List<GameObject> collectedNPCList = new List<GameObject>();
 
     public List<Vector3> previousPositons = new List<Vector3>();
 
@@ -61,15 +61,6 @@ public class playerMovement : MonoBehaviour
                 {
                     npcsList[i].GetComponent<NPCScript>().moveNPC();
                 }
-            }
-
-            if (character.GetComponent<metronomeScript>().OnBeat)
-            {
-                //Debug.Log("hit!");
-            }
-            else
-            {
-                //Debug.Log("Miss!");
             }
         }
 

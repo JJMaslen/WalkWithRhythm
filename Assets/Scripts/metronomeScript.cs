@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class metronomeScript : MonoBehaviour
 {
 
-    public int bpm = 60;
+    public int bpm = 120;
     [SerializeField] int timer = 0;
     [SerializeField] int difficulty = 0;
 
     [SerializeField] double tbb;
     
     [SerializeField] GameObject character = null;
-    
+    [SerializeField] TextMeshProUGUI scoreText = null;
+
+    public int score = 0;
 
     public bool OnBeat = false;
     bool doingAnimation = false;
@@ -31,7 +35,6 @@ public class metronomeScript : MonoBehaviour
         {
             lerp = Mathf.Lerp(0.6f, 1, time/duration);
             character.transform.localScale = new Vector3(character.transform.localScale.x, lerp, character.transform.localScale.z);
-            Debug.Log(lerp);
             time += Time.deltaTime;
             yield return null;
         }
@@ -47,6 +50,20 @@ public class metronomeScript : MonoBehaviour
 
     private void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            if (OnBeat)
+            {
+                Debug.Log("hit!");
+                score = score + 1 + character.GetComponent<playerMovement>().collectedNPCList.Count;
+                scoreText.text = "Score: " + score;
+            }
+            else
+            {
+                Debug.Log("Miss!");
+            }
+        }
+
         if (OnBeat)
         {
             if (doingAnimation == false)
